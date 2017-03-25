@@ -1,7 +1,6 @@
 #!/usr/bin/groovy
 
 def call() {
-    def containers = sh 'docker ps -qa', returnStdout=true
-    sh "docker rm -vf ${containers.trim()}"
+    sh "docker ps -aq | xargs -r docker rm -vf"
 }
 
